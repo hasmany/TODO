@@ -18,9 +18,9 @@
   "homepage": "https://github.com/hasmany/TODO#readme",
   "devDependencies" : {
     "gulp" : "^3.9.1",
-    "gulp-connect" : "^5.0,0",
-    "glup-sass": "^3.1.0",
-    "gulp-conat" : "^2.6.1",
+    "gulp-connect" : "^5.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-concat" : "^2.6.1",
     "jasmine": "^2.8.0",
     "gulp-babel" : "^7.0.0",
     "gulp-sourcemaps" : "^2.6.1",
