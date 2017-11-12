@@ -16,10 +16,15 @@ gulp.task("default", function() {
     console.log("default task");
 });
 
-gulp.task("server", function() {
+gulp.task("serve", function() {
     console.log("start server");
-    connect.server();
+    connect.server({
+        root: "src",
+        livereload: true
+    });
 });
+
+
 
 
 
