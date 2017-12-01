@@ -6,6 +6,27 @@ const sourceMaps = require("gulp-sourcemaps");
 const babel = require("gulp-babel");
 const browserify = require("browserify");
 
+const config = {
+    js: {
+        src: "./src/js/simple-list.js", // Entry Point
+        outPutDir: "./build", // Directory to save bundle to
+        mapDir: "", // Directory to save maps to
+        outPutFile: "bundle.js", // Name to use for our bundle
+    }
+};
+
+
+// This function makes it easy to use common bundling options in different tasks
+function bundle(bundler) {
+    // Add options to add to 'base' bundler passed as parameter
+    bundler
+        .bundle()  // start bundle
+        .pipe(source(config.js.src))
+        .pipe(buffer())  // Convert to gulp pipeline
+        .pipe(gulp.dest(config.js.outPutFile)) 
+        .pipe(livereload());
+}
+
 /*
     1.) create, refresh server on change
     2.) sass
