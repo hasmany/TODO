@@ -5,6 +5,7 @@ const connect = require("gulp-connect");
 const sourceMaps = require("gulp-sourcemaps");
 const babel = require("gulp-babel");
 const browserify = require("browserify");
+const source = require("vinyl-source-stream");
 
 const config = {
     js: {
@@ -26,6 +27,8 @@ function bundle(bundler) {
         .pipe(gulp.dest(config.js.outPutFile)) 
         .pipe(livereload());
 }
+
+
 
 /*
     1.) create, refresh server on change
@@ -77,14 +80,11 @@ gulp.task("js", function() {
         .pipe(connect.reload());
 });
     
-
-
-
-
-
-
-
-
-
+gulp.task("browserify", ()=> {
+    browserify({
+        entries : ".src/js/simple-list.js", 
+        debug: true
+    })
+});
 
 
