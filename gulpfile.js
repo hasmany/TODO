@@ -6,29 +6,16 @@ const sourceMaps = require("gulp-sourcemaps");
 const babel = require("gulp-babel");
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
+const babelify = require("babelify");
 
 const config = {
     js: {
         src: "./src/js/simple-list.js", // Entry Point
         outPutDir: "./build", // Directory to save bundle to
         mapDir: "", // Directory to save maps to
-        outPutFile: "bundle.js", // Name to use for our bundle
+        outPutFile: "simple-list.js", // Name to use for our bundle
     }
 };
-
-
-// This function makes it easy to use common bundling options in different tasks
-function bundle(bundler) {
-    // Add options to add to 'base' bundler passed as parameter
-    bundler
-        .bundle()  // start bundle
-        .pipe(source(config.js.src))
-        .pipe(buffer())  // Convert to gulp pipeline
-        .pipe(gulp.dest(config.js.outPutFile)) 
-        .pipe(livereload());
-}
-
-
 
 /*
     1.) create, refresh server on change
@@ -37,7 +24,7 @@ function bundle(bundler) {
     4.) babel
 */
 
-gulp.task("default", ["html","watch","serve"]);
+gulp.task("default", ["html","sass","browserify","watch","serve"]);
 
 // Starts the connect server
 gulp.task("serve", function() {
@@ -62,7 +49,7 @@ gulp.task("watch", function() {
     console.log("start watching files");
     gulp.watch("./src/**.html",["html"]);
     gulp.watch("./src/scss/**/*.scss",["sass"]);
-    gulp.watch("./src/js/**/*.js",["js"]);
+    gulp.watch("./src/js/**/*.js",["browserify"]);
 });
 
 // Convert sass to css
@@ -81,10 +68,14 @@ gulp.task("js", function() {
 });
     
 gulp.task("browserify", ()=> {
-    browserify({
-        entries : ".src/js/simple-list.js", 
-        debug: true
-    })
+    console.log("start browserify task");
+    return browserify("./src/js/simple-list.js")
+        .transform(babelify,{presets: ["env"]})
+        .bundle()
+        // Pass desired output fillename to vinyl-source-stream-
+        .pipe(source("simple-list.js"))  
+        // Start piping stream to tasks!
+        .pipe(gulp.dest("./build/js")); 
 });
 
 
