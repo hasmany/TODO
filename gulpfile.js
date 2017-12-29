@@ -11,7 +11,7 @@ const babelify = require("babelify");
 const config = {
     js: {
         src: "./src/js/simple-list.js", // Entry Point
-        outPutDir: "./build", // Directory to save bundle to
+        outPutDir: "./build/js", // Directory to save bundle to
         mapDir: "", // Directory to save maps to
         outPutFile: "simple-list.js", // Name to use for our bundle
     }
@@ -69,13 +69,13 @@ gulp.task("js", function() {
     
 gulp.task("browserify", ()=> {
     console.log("start browserify task");
-    return browserify("./src/js/simple-list.js")
+    return browserify(config.js.src)
         .transform(babelify,{presets: ["env"]})
         .bundle()
         // Pass desired output fillename to vinyl-source-stream-
-        .pipe(source("simple-list.js"))  
+        .pipe(source(config.js.outPutFile))  
         // Start piping stream to tasks!
-        .pipe(gulp.dest("./build/js")); 
+        .pipe(gulp.dest(config.js.outPutDir)); 
 });
 
 
