@@ -56,4 +56,16 @@ describe("Simple List", function() {
         expect(list.items[list.items.length-1].constructor.name).toBe("SimpleItem");
     });
 
+    it("should decrease amount of items when an item is removed", function() {
+        var item = new SimpleItem({
+            desc: "Do laundry
+        });       
+        expect(list.items.length).toBe(1);
+        list.removeItem(item);
+    });
+
+    it("", function() {
+        
+    });
+
 });
