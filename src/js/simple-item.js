@@ -2,4 +2,4 @@ function SimpleItem() {
 
 }
 
-console.log("SimpleItem");
+console.log("SimpleItem!");
