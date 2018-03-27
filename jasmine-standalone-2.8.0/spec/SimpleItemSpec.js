@@ -8,6 +8,7 @@ describe("Simple Item", function() {
     });
 
     it("should be a function constructor", function() {
+        console.log(SimpleItem);
         expect(typeof SimpleItem).toBe("function");
     });
 
@@ -21,7 +22,7 @@ describe("Simple Item", function() {
 
     it("can have a due date, it is a date object", function(){
         expect(item.dueDate).toBe("N/A");
-        expect(new SimpleItem({desc: "Check Mail",dueDate: "next week"}.constructor.name).toBe("Error");
+        expect(new SimpleItem({desc: "Check Mail",dueDate: "next week"}).constructor.name).toBe("Error");
         var  newItem = new SimpleItem({
             desc: "Fill out taxes",    
             dueDate: new Date() 

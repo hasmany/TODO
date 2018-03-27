@@ -58,7 +58,7 @@ describe("Simple List", function() {
 
     it("should decrease amount of items when an item is removed", function() {
         var item = new SimpleItem({
-            desc: "Do laundry
+            desc: "Do laundry"
         });       
         expect(list.items.length).toBe(1);
         list.removeItem(item);
