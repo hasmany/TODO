@@ -1,9 +1,6 @@
-// Import statements
-import * as simpleItem from "./simple-item";
-const test = "test";
-console.log(test);
-function SimpleList () {
+import *  as SimpleItem from "./simple-item";
+
+class SimpleList {
 
 }
 
-console.log("SimpleListssss");
