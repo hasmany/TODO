@@ -1,5 +1,5 @@
-function SimpleItem() {
+class SimpleItem {
 
-}
+} 
 
-console.log("SimpleItem");
+module.exports = SimpleItem;
