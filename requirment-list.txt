@@ -1,0 +1,9 @@
+Requirment List:
+
+1.) A todo list
+  -- A todo item can have a due date, description, checker
+  -- create, delete, edit a TODO item
+  -- data will persist via local storage 
+  -- use styles inspired from material css  
+
+  questions: ask cameron about gulp task create-test-files

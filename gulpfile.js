@@ -7,6 +7,7 @@ const babel = require("gulp-babel");
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
 const babelify = require("babelify");
+const stripCode = require("gulp-strip-code");
 
 const config = {
     js: {
@@ -66,6 +67,28 @@ gulp.task("js", function() {
         .pipe(gulp.dest("./build/js/"))
         .pipe(connect.reload());
 });
+var test = function(file) {
+  /*Regex*/
+  console.log("hey");
+};
+
+gulp.task("create-test-file", function() {
+  gulp.src("./src/js/**/*.js")
+    .pipe(test());
+});
+
+gulp.task("create-specs", ()=> {
+  gulp.src("./src/js/**/*.js")
+    .pipe(stripCode({
+      start_comment: "remove for specs:start ",
+      end_comment: "remove for specs:end"
+    })) 
+    .pipe(gulp.dest("spec/js/"));
+});
+
+/*
+ * create specs concat file
+ * */
     
 gulp.task("browserify", ()=> {
     console.log("start browserify task");
