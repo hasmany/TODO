@@ -1,10 +1,10 @@
+class SimpleItem {
+
+} 
+
+
 
 class SimpleList {
 
 }
-
-
-class SimpleItem {
-
-} 
 
