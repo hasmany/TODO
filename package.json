@@ -4,7 +4,8 @@
   "description": "A todo list written in vanilla javascript",
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "test": "open spec/SpecRunner.html"
   },
   "repository": {
     "type": "git",
