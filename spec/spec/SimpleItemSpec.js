@@ -27,11 +27,11 @@ describe("Simple Item Instance", function() {
 
 
     it("should return an error if it's created without a description property", function() {
-      expect(new SimpleItem().constructor.name).toBe("Error");
+      expect(new SimpleItem()).toThrowError("must instaniate item with a 'desc' propety");
     });
 
     it("should have a getter function named 'getDesc'", function() {
-      expect(item.getDesc)toBeDefined();  
+      expect(item.getDesc).toBeDefined();  
       expect(typeof item.getDesc).toBe("function"); 
     });
 
@@ -57,7 +57,7 @@ describe("Simple Item Instance", function() {
       expect(typeof item.getStatus).toBe("function");
     });
 
-    it("'getStatus' method should return the status", function() {
+    it("'getStatus' method should return the complete status", function() {
       let lawnItem = new SimpleItem({
         desc: "Mow the Lawn",
         complete: true
@@ -72,21 +72,32 @@ describe("Simple Item Instance", function() {
     });
 
     it("should default with a complete property which equals to false", function(){
-        expect(typeof item.getStatus()).toBe("boolean");  
-        expect(item.getStatus()).toBe(false);
+        let makeBedItem = new SimpleItem({
+          desc: "Make the Bed"
+        });
+        expect(typeof makeBedItem.getStatus()).toBe("boolean");  
+        expect(makeBedItem.getStatus()).toBe(false);
     });
 
     it("should have a setter method named, 'setStatus'", function() {
-
+      expect(item.setStatus).toBeDefined();
+      expect(typeof item.setStatus).toBe("function");
     });
 
-    it("'setStatus' method should set the complete property, it must accept a boolean", function() {
-
+    it("'setStatus' method must accept a boolean and set the complete property", function() {
+      expect(item.setStatus("true")).toThrowError("parameter must be of type 'boolean'");
+      expect(item.getStatus()).toBe(false);
+      item.setStatus(true);
+      expect(item.getStatus()).toBe(true);
+      item.setStatus(false);
+      expect(item.getStauts()).toBe(false);
     });
-
+    
     xit("should have a default due date property, which is 'N/A'", function(){
         expect(item.dueDate).toBe("N/A");
     });
+    
+    //TODO: getter function for date
 
     xit("should have a setter function to set it's due date property", function() {
         expect(item.setDate).toBeDefined();
