@@ -1,8 +1,8 @@
-describe("Simple List", function() {
+describe("Simple List Class", function() {
     var list;    
 
     beforeEach(function() {
-        var list = new SimpleList();
+        list = new SimpleList();
     });
 
     it("should be a function constructor", function() {
@@ -13,59 +13,63 @@ describe("Simple List", function() {
         expect(list.constructor.name).toBe("SimpleList");
     });
 
-    it ("should have a default id of simple-list", function() {
-        expect(list.id).toBe("simple-list"); 
+});
+
+describe("Simple List Instance", function() {
+  var list;
+
+  beforeEach(function() {
+      list = new SimpleList();
+  });
+
+
+  it("should have a getter function named 'getTitle'", function() {
+    expect(list.getTitle).toBeDefined();
+    expect(typeof list.getTitle).toBe('function');      
+  });  
+
+  it("'getTitle' method should return the title property", function(){
+    let toDoList = new SimpleList({
+      title: "My Todo list" 
     });
+    expect(toDoList.getTitle()).toBe("My ToDo list");
+  });
 
-    it("can be instantiated with an Id", function() {
-        var exampleList = new SimpleList({
-            id: "custom-list-id"
-        });
-        expect(exampleList.id).toBe("custom-list-id");
-    });
+  it("should default with an empty string if title paramter is not passed", function() {
+    expect(list.getTitle()).toBe("");;
+    let groceryList = new SimpleList();
+    expect(groceryList.getTitle()).toBe("");
+  });
 
-    it("can be instantiated with a title", function() {
-        var exampleList = new SimpleList({
-            title: "example-list"
-        }); 
-        expect(exampleList.title).toBe("example-list");
-    });
+  it("should have a setter function named 'setTitle'", function() {
+    expect(list.setTitle).toBeDefined();
+    expect(typeof list.setTitle).toBe("function");
+  });
 
-    it("should have a list of items", function() {
-       expect(list.items).not.toBe("undefined"); 
-       expect(list.items.constructor.name).toBe("Array");
-    }); 
+  it("'setTitle' should set the title property", function() {
+    let groceryList = new SimpleList();
+    expect(groceryList.getTitle()).toBe("");
+    expect(groceryList.setTitle("My Grocery List"));
+    expect(grocerylist.getTitle()).toBe("My Grocery List");
+  });
 
-    it("should increase amount of items when an item is created", function() {
+  it("should have a getter function named 'getItems'", function() {
+    expect(list.getItems).toBeDefined();  
+    expect(typeof list.getItems).toBe('function'); 
+  });
 
-        expect(list.items.length).toBe(0);
-        var item = new SimpleItem({
-            desc: "Do laundry",
-        });
+  it("'getList' method should default to an empty array if a list does not have any items", function() {
+    expect(list.getItems()).toBe([]);
+  });
 
-        expect(list.items.length).toBe(1);
-    });
+  it("should have a method called 'addItem'", function() {
+    expect(list.addItem).toBeDefined();
+    expect(typeof list.addItem).toBe("function");
+  });
 
-    it("should include an item in the list, when an item is created", function() {
-        var item = new SimpleItem({
-            desc: "Do laundry"    
-        });
-
-        expect(typeof list.items[list.items.length-1]).toBe("object");
-        expect(list.items[list.items.length-1].desc).toBe("Do laundry");
-        expect(list.items[list.items.length-1].constructor.name).toBe("SimpleItem");
-    });
-
-    it("should decrease amount of items when an item is removed", function() {
-        var item = new SimpleItem({
-            desc: "Do laundry"
-        });       
-        expect(list.items.length).toBe(1);
-        list.removeItem(item);
-    });
-
-    it("", function() {
-        
-    });
-
+  it("'addItem' method must include an object with the property 'desc' and return true if an item is added sucessfuly", function() {
+    expect(list.addItem()).toThrowError("addItem must include paramter that is an object with a desc property");
+    expect(list.addItem({description: "do homework"})).toThrowError("addItem must include paramter that is an object with a desc property");
+    expect(list.addItem({desc: "do homework"})).toBe(true);
+  });
 });

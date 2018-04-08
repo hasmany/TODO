@@ -7,3 +7,14 @@ Requirment List:
   -- use styles inspired from material css  
 
   questions: ask cameron about gulp task create-test-files
+
+  List 
+    -- can have a title, optional
+    -- should have a list of items, default to 0 
+    -- should be able to create/add an item 
+    -- should increase list of items count when item added
+    -- should be able to delete an item
+    -- should decrease list of items count when item added
+    -- should be able to filter item by complete status
+
+    add instanceof test
