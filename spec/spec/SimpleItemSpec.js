@@ -4,8 +4,9 @@ describe("Simple Item Class", function() {
       expect(typeof SimpleItem).toBe("function");
     });
 
-    it("should have a class name of 'SimpleItem'", function() {
-      expect(SimpleItem.constructor.name).toBe("SimpleItem");
+    it("should create an instance of the class name of 'SimpleItem'", function() {
+      var item = new SimpleItem({desc: "example todo item"});
+      expect(item.constructor.name).toBe("SimpleItem");
     });
 
     it("should have a getter method named 'getCounter'", function() {
