@@ -12,7 +12,6 @@ describe("Simple List Class", function() {
     it("should create an instance of the class SimpleList", function() {
         expect(list.constructor.name).toBe("SimpleList");
     });
-
 });
 
 describe("Simple List Instance", function() {
