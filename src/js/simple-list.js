@@ -1,9 +1,8 @@
-// Import statements
-import * as simpleItem from "./simple-item";
-const test = "test";
-console.log(test);
-function SimpleList () {
+/* remove for specs:start */
+import  SimpleItem from  "./simple-item";
+/* remove for specs:end */
+
+class SimpleList {
 
 }
 
-console.log("SimpleListssss");

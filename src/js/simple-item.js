@@ -1,5 +1,7 @@
-function SimpleItem() {
+class SimpleItem {
 
-}
+} 
 
-console.log("SimpleItem");
+/* remove for specs:start */
+export default SimpleItem;
+/* remove for specs:end */
