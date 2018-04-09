@@ -1,18 +1,27 @@
 describe("Simple Item Class", function() {
-    var item;   
-
-    beforeEach(function() {
-        item = new SimpleItem({
-            desc: "Do Laundry"
-        });
-    });
-
+    
     it("should be a function constructor", function() {
       expect(typeof SimpleItem).toBe("function");
     });
 
     it("should have a class name of 'SimpleItem'", function() {
       expect(SimpleItem.constructor.name.toBe("SimpleItem");
+    });
+
+    it("should have a getter method named 'getCounter'", function() {
+      expect(SimpleItem.getCounter).toBeDefined();
+      expect(typeof SimpleItem.getCounter).toBe("function");
+    });
+
+    it("'getCounter' return a number, the number defaults to 0", function{
+      expect(typeof SimpleItem).toBe("number");
+      expect(SimpleItem.getCounter()).toBe(0);
+    });
+
+    it("Instantiating an item will increment the counter value",function() {
+      expect(SimpleItem.getCounter).toBe(0));
+      let toDoItem = new SimpleItem({desc: "walk the dog."}); 
+      expect(SimpleItem.getCounter).toBe(1));
     });
 });
 
@@ -25,9 +34,8 @@ describe("Simple Item Instance", function() {
         });
     });
 
-
     it("should return an error if it's created without a description property", function() {
-      expect(new SimpleItem()).toThrowError("must instaniate item with a 'desc' propety");
+      expect(new SimpleItem()).toThrowError("must instantiate item with a 'desc' propety");
     });
 
     it("should have a getter function named 'getDesc'", function() {
@@ -91,6 +99,19 @@ describe("Simple Item Instance", function() {
       expect(item.getStatus()).toBe(true);
       item.setStatus(false);
       expect(item.getStauts()).toBe(false);
+    });
+
+    it("should have a getter method named, 'getId'", function() {
+      expect(item.getId).toBeDefined();
+      expect(typeof item.getId).toBe("function");
+    });
+
+    it("'getId' should return the id of an item. The id for an item is automatically added and starts at 1", function() {
+      expect(item.getId()).toBe(1);
+      let toDoItem2 = new SimpleItem({desc: "go to the gym."});
+      expect(toDoItem2.getId()).toBe(2);
+      let toDoItem3 = new SimpleItem({desc: "clean the car"});
+      expect(toDoItem3.getId()).toBe(3);
     });
     
     xit("should have a default due date property, which is 'N/A'", function(){
