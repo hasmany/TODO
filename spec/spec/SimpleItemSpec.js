@@ -5,7 +5,7 @@ describe("Simple Item Class", function() {
     });
 
     it("should have a class name of 'SimpleItem'", function() {
-      expect(SimpleItem.constructor.name.toBe("SimpleItem");
+      expect(SimpleItem.constructor.name).toBe("SimpleItem");
     });
 
     it("should have a getter method named 'getCounter'", function() {
@@ -13,15 +13,15 @@ describe("Simple Item Class", function() {
       expect(typeof SimpleItem.getCounter).toBe("function");
     });
 
-    it("'getCounter' return a number, the number defaults to 0", function{
+    it("'getCounter' return a number, the number defaults to 0", function() {
       expect(typeof SimpleItem).toBe("number");
       expect(SimpleItem.getCounter()).toBe(0);
     });
 
     it("Instantiating an item will increment the counter value",function() {
-      expect(SimpleItem.getCounter).toBe(0));
+      expect(SimpleItem.getCounter).toBe(0);
       let toDoItem = new SimpleItem({desc: "walk the dog."}); 
-      expect(SimpleItem.getCounter).toBe(1));
+      expect(SimpleItem.getCounter).toBe(1);
     });
 });
 
@@ -60,7 +60,7 @@ describe("Simple Item Instance", function() {
         expect(item.desc).toBe("Wash Dishes");
     });
 
-    it("should have a getter function named 'getStatus')", function() {
+    it("should have a getter function named 'getStatus'", function() {
       expect(item.getStatus).toBeDefined();
       expect(typeof item.getStatus).toBe("function");
     });
@@ -76,7 +76,7 @@ describe("Simple Item Instance", function() {
         complete: false
       });
       expect(lawnItem.getStatus()).toBe(true);
-      expect(cookDinnerItem.getStatus().toBe(false);
+      expect(cookDinnerItem.getStatus()).toBe(false);
     });
 
     it("should default with a complete property which equals to false", function(){
