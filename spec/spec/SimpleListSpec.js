@@ -21,7 +21,6 @@ describe("Simple List Instance", function() {
       list = new SimpleList();
   });
 
-
   it("should have a getter function named 'getTitle'", function() {
     expect(list.getTitle).toBeDefined();
     expect(typeof list.getTitle).toBe('function');      
@@ -49,7 +48,7 @@ describe("Simple List Instance", function() {
     let groceryList = new SimpleList();
     expect(groceryList.getTitle()).toBe("");
     expect(groceryList.setTitle("My Grocery List"));
-    expect(grocerylist.getTitle()).toBe("My Grocery List");
+    expect(groceryList.getTitle()).toBe("My Grocery List");
   });
 
   it("should have a getter function named 'getItems'", function() {
@@ -69,8 +68,8 @@ describe("Simple List Instance", function() {
   });
 
   it("'addItem' method invocation must include an object with the property 'desc' and return true if an item is added successfully", function() {
-    expect(list.addItem()).toThrowError("addItem argument must include an object with a desc property");
-    expect(list.addItem({description: "do homework"})).toThrowError("addItem argument must include an object with a desc property");
+    expect(function() { list.addItem() }).toThrowError("addItem argument must include an object with a desc property");
+    expect( function() { list.addItem({description: "do homework"}) } ).toThrowError("addItem argument must include an object with a desc property");
     expect(list.addItem({desc: "do homework"})).toBe(true);
   });
 
