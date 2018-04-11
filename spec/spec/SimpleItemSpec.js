@@ -56,9 +56,9 @@ describe("Simple Item Instance", function() {
     });
 
     it("'setDesc' method should set it's description", function() {
-        expect(item.getdesc()).toBe("Do Laundry");
+        expect(item.getDesc()).toBe("Do Laundry");
         item.setDesc("Wash Dishes");
-        expect(item.desc).toBe("Wash Dishes");
+        expect(item.getDesc()).toBe("Wash Dishes");
     });
 
     it("should have a getter function named 'getStatus'", function() {
