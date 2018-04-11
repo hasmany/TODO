@@ -14,13 +14,13 @@ describe("Simple Item Class", function() {
       expect(typeof SimpleItem.getCounter).toBe("function");
     });
 
-    it("'getCounter' return a number, the number defaults to 0", function() {
-      expect(typeof SimpleItem).toBe("number");
+    it("'getCounter' return a number, the number defaults to 0", function{
+      expect(typeof SimpleItem.getCounter()).toBe("number");
       expect(SimpleItem.getCounter()).toBe(0);
     });
 
     it("Instantiating an item will increment the counter value",function() {
-      expect(SimpleItem.getCounter).toBe(0);
+      expect(SimpleItem.getCounter()).toBe(0);
       let toDoItem = new SimpleItem({desc: "walk the dog."}); 
       expect(SimpleItem.getCounter).toBe(1);
     });
