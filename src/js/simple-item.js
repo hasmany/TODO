@@ -37,6 +37,10 @@ class SimpleItem {
       this.complete = status;
     }
   }
+
+  getId() {
+    return counter;
+  }
 } 
 
 /* remove for specs:start */

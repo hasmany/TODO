@@ -50,6 +50,11 @@ var SimpleItem = function () {
         this.complete = status;
       }
     }
+  }, {
+    key: "getId",
+    value: function getId() {
+      return counter;
+    }
   }], [{
     key: "getCounter",
     value: function getCounter() {
