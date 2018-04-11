@@ -21,10 +21,24 @@ var SimpleItem = function () {
       throw new Error("must instantiate item with a 'desc' property");
     } else {
       counter++;
+      this.desc = options.desc;
     }
   }
 
-  _createClass(SimpleItem, null, [{
+  _createClass(SimpleItem, [{
+    key: "getDesc",
+    value: function getDesc() {
+      return this.desc;
+    }
+  }, {
+    key: "setDesc",
+    value: function setDesc(desc) {
+      this.desc = desc;
+    }
+  }, {
+    key: "getStatus",
+    value: function getStatus() {}
+  }], [{
     key: "getCounter",
     value: function getCounter() {
       return counter;
