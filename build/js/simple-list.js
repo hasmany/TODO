@@ -14,6 +14,8 @@ var counter = 0;
 var SimpleItem = function () {
   function SimpleItem() {
     _classCallCheck(this, SimpleItem);
+
+    counter++;
   }
 
   _createClass(SimpleItem, null, [{
