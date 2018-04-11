@@ -9,6 +9,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var counter = 0;
+
 var SimpleItem = function () {
   function SimpleItem() {
     _classCallCheck(this, SimpleItem);
@@ -16,14 +18,17 @@ var SimpleItem = function () {
 
   _createClass(SimpleItem, null, [{
     key: "getCounter",
-    value: function getCounter() {}
+    value: function getCounter() {
+      return counter;
+    }
   }]);
 
   return SimpleItem;
 }();
 
-console.log("hey");
 /* remove for specs:start */
+
+
 exports.default = SimpleItem;
 /* remove for specs:end */
 
