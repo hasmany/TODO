@@ -72,21 +72,58 @@ exports.default = SimpleItem;
 /* remove for specs:end */
 
 },{}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var _simpleItem = require("./simple-item");
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* remove for specs:start */
+
+
+var _simpleItem = require('./simple-item');
 
 var _simpleItem2 = _interopRequireDefault(_simpleItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* remove for specs:start */
-
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /* remove for specs:end */
 
-var SimpleList = function SimpleList() {
-  _classCallCheck(this, SimpleList);
-};
+var SimpleList = function () {
+  function SimpleList(options) {
+    _classCallCheck(this, SimpleList);
+
+    this.title = options && options.title ? options.title : '';
+    this.items = options && options.items ? options.items : [];
+  }
+
+  _createClass(SimpleList, [{
+    key: 'getTitle',
+    value: function getTitle() {
+      return this.title;
+    }
+  }, {
+    key: 'setTitle',
+    value: function setTitle(title) {
+      this.title = title;
+    }
+  }, {
+    key: 'getItems',
+    value: function getItems() {
+      return this.items;
+    }
+  }, {
+    key: 'addItem',
+    value: function addItem(options) {
+      if (options && (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' && options.desc) {
+        return true;
+      } else {
+        throw new Error('addItem argument must include an object with a desc property');
+      }
+    }
+  }]);
+
+  return SimpleList;
+}();
 
 },{"./simple-item":1}]},{},[2]);
