@@ -30,6 +30,9 @@ describe("Simple Item Instance", function() {
     var item;   
 
     beforeEach(function() {
+        // reset counter
+        counter = 0;
+
         item = new SimpleItem({
             desc: "Do Laundry"
         });
