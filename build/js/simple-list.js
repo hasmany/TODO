@@ -12,10 +12,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var counter = 0;
 
 var SimpleItem = function () {
-  function SimpleItem() {
+  function SimpleItem(options) {
     _classCallCheck(this, SimpleItem);
 
-    counter++;
+    if (!options) {
+      throw new Error("must instantiate item with options");
+    } else if (!options.desc) {
+      throw new Error("must instantiate item with a 'desc' property");
+    } else {
+      counter++;
+    }
   }
 
   _createClass(SimpleItem, null, [{
