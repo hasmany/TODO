@@ -14,7 +14,7 @@ describe("Simple Item Class", function() {
       expect(typeof SimpleItem.getCounter).toBe("function");
     });
 
-    it("'getCounter' return a number, the number defaults to 0", function{
+    it("'getCounter' return a number, the number defaults to 0", function(){
       expect(typeof SimpleItem.getCounter()).toBe("number");
       expect(SimpleItem.getCounter()).toBe(0);
     });
@@ -22,7 +22,7 @@ describe("Simple Item Class", function() {
     it("Instantiating an item will increment the counter value",function() {
       expect(SimpleItem.getCounter()).toBe(0);
       let toDoItem = new SimpleItem({desc: "walk the dog."}); 
-      expect(SimpleItem.getCounter).toBe(1);
+      expect(SimpleItem.getCounter()).toBe(1);
     });
 });
 
