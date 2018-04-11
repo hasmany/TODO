@@ -1,5 +1,10 @@
 describe("Simple Item Class", function() {
     
+    beforeEach(function() {
+      // reset counter
+      counter = 0;
+    });
+
     it("should be a function constructor", function() {
       expect(typeof SimpleItem).toBe("function");
     });
