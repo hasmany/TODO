@@ -10,6 +10,7 @@ class SimpleItem {
     } else {
       counter++;
       this.desc = options.desc;
+      this.complete = options.complete ? options.complete: false;
     }
   }
 
@@ -26,7 +27,15 @@ class SimpleItem {
   }
 
   getStatus() {
+    return this.complete;
+  }
 
+  setStatus(status) {
+    if ( typeof status !== "boolean") {
+      throw new Error("parameter must be of type 'boolean'");
+    } else {
+      this.complete = status;
+    }
   }
 } 
 

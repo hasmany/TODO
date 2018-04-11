@@ -22,6 +22,7 @@ var SimpleItem = function () {
     } else {
       counter++;
       this.desc = options.desc;
+      this.complete = options.complete ? options.complete : false;
     }
   }
 
@@ -37,7 +38,18 @@ var SimpleItem = function () {
     }
   }, {
     key: "getStatus",
-    value: function getStatus() {}
+    value: function getStatus() {
+      return this.complete;
+    }
+  }, {
+    key: "setStatus",
+    value: function setStatus(status) {
+      if (typeof status !== "boolean") {
+        throw new Error("parameter must be of type 'boolean'");
+      } else {
+        this.complete = status;
+      }
+    }
   }], [{
     key: "getCounter",
     value: function getCounter() {
