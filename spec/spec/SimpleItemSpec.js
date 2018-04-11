@@ -14,7 +14,7 @@ describe("Simple Item Class", function() {
     });
 
     it("'getCounter' return a number, the number defaults to 0", function{
-      expect(typeof SimpleItem).toBe("number");
+      expect(typeof SimpleItem.getCounter()).toBe("number");
       expect(SimpleItem.getCounter()).toBe(0);
     });
 
