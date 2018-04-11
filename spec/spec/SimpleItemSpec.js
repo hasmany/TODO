@@ -94,12 +94,12 @@ describe("Simple Item Instance", function() {
     });
 
     it("'setStatus' method must accept a boolean and set the complete property", function() {
-      expect(item.setStatus("true")).toThrowError("parameter must be of type 'boolean'");
+      expect(function() { item.setStatus("true") }).toThrowError("parameter must be of type 'boolean'");
       expect(item.getStatus()).toBe(false);
       item.setStatus(true);
       expect(item.getStatus()).toBe(true);
       item.setStatus(false);
-      expect(item.getStauts()).toBe(false);
+      expect(item.getStatus()).toBe(false);
     });
 
     it("should have a getter method named, 'getId'", function() {
