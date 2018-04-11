@@ -40,8 +40,12 @@ describe("Simple Item Instance", function() {
         });
     });
 
+    it("should return an error if it's created without options", function() {
+      expect(function(){new SimpleItem()}).toThrowError("must instantiate item with options");
+    });
+
     it("should return an error if it's created without a description property", function() {
-      expect(new SimpleItem()).toThrowError("must instantiate item with a 'desc' propety");
+      expect(function(){new SimpleItem({ description: "my todo task"})}).toThrowError("must instantiate item with a 'desc' property");
     });
 
     it("should have a getter function named 'getDesc'", function() {
