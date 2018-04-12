@@ -9,7 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var counter = 0;
+var id = 0;
 
 var SimpleItem = function () {
   function SimpleItem(options) {
@@ -20,9 +20,11 @@ var SimpleItem = function () {
     } else if (!options.desc) {
       throw new Error("must instantiate item with a 'desc' property");
     } else {
-      counter++;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete : false;
+      Object.defineProperty(this, "id", {
+        writable: false
+      });
     }
   }
 
@@ -53,12 +55,7 @@ var SimpleItem = function () {
   }, {
     key: "getId",
     value: function getId() {
-      return counter;
-    }
-  }], [{
-    key: "getCounter",
-    value: function getCounter() {
-      return counter;
+      return this.id;
     }
   }]);
 
@@ -131,7 +128,8 @@ var SimpleList = function () {
       var removeSuccess = false;
       this.items.forEach(function (item, index) {
         if (item.getId() === id) {
-          _this.items = _this.items.splice(1, index);
+          // TODO: investigate why
+          _this.items.splice(index, 1);
           removeSuccess = true;
         }
       });

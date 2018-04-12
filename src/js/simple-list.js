@@ -34,7 +34,8 @@ class SimpleList {
     let removeSuccess = false;
     this.items.forEach( (item, index) => {
       if (item.getId() === id) {
-        this.items = this.items.splice(1,index);
+        // TODO: investigate why
+        this.items.splice(index,1);
         removeSuccess = true;
       }
     }); 

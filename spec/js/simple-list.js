@@ -1,4 +1,4 @@
-let counter = 0;
+let id = 0;
 
 class SimpleItem {
 
@@ -8,15 +8,15 @@ class SimpleItem {
     } else if (!options.desc) {
       throw new Error("must instantiate item with a 'desc' property");
     } else {
-      counter++;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
+      id++;
+      Object.defineProperty(this, "id", {
+        value: id, 
+        writable: false
+      });
     }
   }
-
-  static getCounter() {
-    return counter;
-  } 
 
   getDesc() {
     return this.desc;
@@ -39,7 +39,7 @@ class SimpleItem {
   }
 
   getId() {
-    return counter;
+    return this.id;
   }
 } 
 
@@ -77,7 +77,8 @@ class SimpleList {
     let removeSuccess = false;
     this.items.forEach( (item, index) => {
       if (item.getId() === id) {
-        this.items = this.items.splice(1,index);
+        // TODO: investigate why
+        this.items.splice(index,1);
         removeSuccess = true;
       }
     }); 

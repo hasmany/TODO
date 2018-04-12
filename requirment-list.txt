@@ -18,3 +18,10 @@ Requirment List:
     -- should be able to filter item by complete status
 
     add instanceof test
+
+--- create weakmaps to store private methods
+--- add id, and setter method
+
+Use this example
+ 
+http://fitzgeraldnick.com/2014/01/13/hiding-implementation-details-with-e6-weakmaps.html
