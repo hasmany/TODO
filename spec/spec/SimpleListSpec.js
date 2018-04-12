@@ -95,22 +95,17 @@ describe("Simple List Instance", function() {
 
   it("'removeItem' method accepts a number as an argument; it will remove an item from a list's items property with the corresponding id, if an id is not found it will return false.", function() {
     expect(list.getItems().length).toBe(0);
-    console.log(list.getItems());
     list.addItem({desc: "check mail"}) 
     expect(list.getItems().length).toBe(1);
     expect(list.getItems()[0].getId()).toBe(1);
     expect(list.removeItem(5)).toBe(false);
-    console.log(list.getItems());
     expect(list.removeItem(1)).toBe(true);
-    console.log(list.getItems());
     expect(list.getItems().length).toBe(0);
     list.addItem({desc: "change oil car"});
     list.addItem({desc: "sign up for yoga class"});
     expect(list.getItems().length).toBe(2); 
     expect(list.getItems()[1].getId()).toBe(3);
     expect(list.getItems()[1].getDesc()).toBe("sign up for yoga class");
-    console.log(list.getItems());
-    console.log(list.getItems()[0].getId());
     expect(list.removeItem(2)).toBe(true);
     expect(list.getItems().length).toBe(1);
     expect(list.getItems()[0].getDesc()).toBe("sign up for yoga class");
