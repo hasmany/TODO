@@ -2,7 +2,7 @@ describe("Simple Item Class", function() {
     
     beforeEach(function() {
       // reset counter
-      counter = 0;
+      itemData  = 0;
     });
 
     it("should be a function constructor", function() {
@@ -24,11 +24,6 @@ describe("Simple Item Class", function() {
       expect(SimpleItem.getCounter()).toBe(0);
     });
 
-    it("Instantiating an item will increment the counter value",function() {
-      expect(SimpleItem.getCounter()).toBe(0);
-      let toDoItem = new SimpleItem({desc: "walk the dog."}); 
-      expect(SimpleItem.getCounter()).toBe(1);
-    });
 });
 
 describe("Simple Item Instance", function() {
@@ -36,7 +31,7 @@ describe("Simple Item Instance", function() {
 
     beforeEach(function() {
         // reset counter
-        counter = 0;
+        itemData = 0;
 
         item = new SimpleItem({
             desc: "Do Laundry"

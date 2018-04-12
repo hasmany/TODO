@@ -116,10 +116,27 @@ var SimpleList = function () {
     key: 'addItem',
     value: function addItem(options) {
       if (options && (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' && options.desc) {
+        this.items.push(new _simpleItem2.default({ desc: options.desc }));
         return true;
       } else {
         throw new Error('addItem argument must include an object with a desc property');
       }
+    }
+  }, {
+    key: 'removeItem',
+    value: function removeItem(id) {
+      var _this = this;
+
+      if (typeof id !== "number") throw new Error("removeItem must be passed a number");
+      var removeSuccess = false;
+      this.items.forEach(function (item, index) {
+        if (item.getId() === id) {
+          _this.items = _this.items.splice(1, index);
+          removeSuccess = true;
+        }
+      });
+
+      return removeSuccess;
     }
   }]);
 
