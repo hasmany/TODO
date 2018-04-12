@@ -2,7 +2,7 @@ describe("Simple Item Class", function() {
     
     beforeEach(function() {
       // reset counter
-      itemData  = 0;
+      id = 0;
     });
 
     it("should be a function constructor", function() {
@@ -13,17 +13,7 @@ describe("Simple Item Class", function() {
       var item = new SimpleItem({desc: "example todo item"});
       expect(item.constructor.name).toBe("SimpleItem");
     });
-
-    it("should have a getter method named 'getCounter'", function() {
-      expect(SimpleItem.getCounter).toBeDefined();
-      expect(typeof SimpleItem.getCounter).toBe("function");
-    });
-
-    it("'getCounter' return a number, the number defaults to 0", function(){
-      expect(typeof SimpleItem.getCounter()).toBe("number");
-      expect(SimpleItem.getCounter()).toBe(0);
-    });
-
+    
 });
 
 describe("Simple Item Instance", function() {
@@ -31,8 +21,7 @@ describe("Simple Item Instance", function() {
 
     beforeEach(function() {
         // reset counter
-        itemData = 0;
-
+        id = 0;
         item = new SimpleItem({
             desc: "Do Laundry"
         });
