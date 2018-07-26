@@ -9,6 +9,7 @@ class SimpleItem {
       throw new Error("must instantiate item with a 'desc' property");
     } else {
       counter++;
+      this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
     }
