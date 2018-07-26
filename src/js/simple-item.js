@@ -1,4 +1,4 @@
-let id = 0;
+let counter = 0;
 
 class SimpleItem {
 
@@ -12,10 +12,10 @@ class SimpleItem {
       this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
-      Object.defineProperty(this, "id", {
-        value: id, 
-        writable: false
-      });
+      // Object.defineProperty(this, "id", {
+      //   value: id, 
+      //   writable: false
+      // });
     }
   }
 
