@@ -1,4 +1,4 @@
-let counter = 0;
+let id = 0;
 
 class SimpleItem {
 
@@ -12,12 +12,12 @@ class SimpleItem {
       this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
+      Object.defineProperty(this, "id", {
+        value: id, 
+        writable: false
+      });
     }
   }
-
-  static getCounter() {
-    return counter;
-  } 
 
   getDesc() {
     return this.desc;
@@ -40,7 +40,7 @@ class SimpleItem {
   }
 
   getId() {
-    return counter;
+    return this.id;
   }
 } 
 

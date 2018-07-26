@@ -18,3 +18,17 @@ Requirment List:
     -- should be able to filter item by complete status
 
     add instanceof test
+
+
+TODO ::
+
+--Use weakmap/symbols, other methods to make attributes private
+  Use this example
+  http://fitzgeraldnick.com/2014/01/13/hiding-implementation-details-with-e6-weakmaps.html
+
+-- error handling for settitle and set desc
+-- function to get an item based on id
+-- function get completed items
+-- function to get incompleted items
+-- function to add a bunch of items
+

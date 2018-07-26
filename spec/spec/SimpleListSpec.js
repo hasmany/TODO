@@ -2,6 +2,8 @@ describe("Simple List Class", function() {
     var list;    
 
     beforeEach(function() {
+        // reset counter;
+        id = 0;
         list = new SimpleList();
     });
 

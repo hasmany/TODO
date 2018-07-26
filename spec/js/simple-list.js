@@ -12,12 +12,12 @@ class SimpleItem {
       this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
+      Object.defineProperty(this, "id", {
+        value: id, 
+        writable: false
+      });
     }
   }
-
-  static getCounter() {
-    return counter;
-  } 
 
   getDesc() {
     return this.desc;
@@ -40,7 +40,7 @@ class SimpleItem {
   }
 
   getId() {
-    return counter;
+    return this.id;
   }
 } 
 
@@ -140,9 +140,13 @@ class SimpleList {
 
   addItem(options) {
     if (options && typeof options === 'object' && options.desc) {
+<<<<<<< HEAD
       const item = new SimpleItem(options);
       this.items.push(item);
       this.appendItem(item);
+=======
+      this.items.push( new SimpleItem({ desc: options.desc}) );
+>>>>>>> 45d655da197e936c6d35362293ab55dbdc3f1a7b
       return true;
     } else {
       throw new Error('addItem argument must include an object with a desc property');
@@ -150,6 +154,7 @@ class SimpleList {
   }
 
   removeItem(id) {
+<<<<<<< HEAD
     for (let i = this.items.length - 1;  i >= 0; i-- ) {
       if (this.items[i].id === id) {
         this.items.splice(i,1);
@@ -158,5 +163,18 @@ class SimpleList {
       }
     }
     return false;
+=======
+    if (typeof id !== "number") throw new Error("removeItem must be passed a number");
+    let removeSuccess = false;
+    this.items.forEach( (item, index) => {
+      if (item.getId() === id) {
+        // TODO: investigate why
+        this.items.splice(index,1);
+        removeSuccess = true;
+      }
+    }); 
+
+    return removeSuccess;
+>>>>>>> 45d655da197e936c6d35362293ab55dbdc3f1a7b
   }
 }

@@ -9,7 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var counter = 0;
+var id = 0;
 
 var SimpleItem = function () {
   function SimpleItem(options) {
@@ -24,6 +24,9 @@ var SimpleItem = function () {
       this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete : false;
+      Object.defineProperty(this, "id", {
+        writable: false
+      });
     }
   }
 
@@ -54,12 +57,7 @@ var SimpleItem = function () {
   }, {
     key: "getId",
     value: function getId() {
-      return counter;
-    }
-  }], [{
-    key: "getCounter",
-    value: function getCounter() {
-      return counter;
+      return this.id;
     }
   }]);
 
@@ -202,9 +200,13 @@ var SimpleList = function () {
     key: 'addItem',
     value: function addItem(options) {
       if (options && (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' && options.desc) {
+<<<<<<< HEAD
         var item = new _simpleItem2.default(options);
         this.items.push(item);
         this.appendItem(item);
+=======
+        this.items.push(new _simpleItem2.default({ desc: options.desc }));
+>>>>>>> 45d655da197e936c6d35362293ab55dbdc3f1a7b
         return true;
       } else {
         throw new Error('addItem argument must include an object with a desc property');
@@ -213,6 +215,7 @@ var SimpleList = function () {
   }, {
     key: 'removeItem',
     value: function removeItem(id) {
+<<<<<<< HEAD
       for (var i = this.items.length - 1; i >= 0; i--) {
         if (this.items[i].id === id) {
           this.items.splice(i, 1);
@@ -221,6 +224,21 @@ var SimpleList = function () {
         }
       }
       return false;
+=======
+      var _this = this;
+
+      if (typeof id !== "number") throw new Error("removeItem must be passed a number");
+      var removeSuccess = false;
+      this.items.forEach(function (item, index) {
+        if (item.getId() === id) {
+          // TODO: investigate why
+          _this.items.splice(index, 1);
+          removeSuccess = true;
+        }
+      });
+
+      return removeSuccess;
+>>>>>>> 45d655da197e936c6d35362293ab55dbdc3f1a7b
     }
   }]);
 
