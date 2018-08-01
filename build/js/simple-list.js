@@ -104,6 +104,7 @@ var SimpleList = function () {
     value: function initList() {
       this.simpleListElement = document.querySelector(this.selector);
       this.createListElement();
+      this.attachListeners();
     }
   }, {
     key: 'createListElement',
@@ -120,6 +121,21 @@ var SimpleList = function () {
       } else {
         throw new Error('DOM element with ' + this.selector + ' selector not found');
       }
+    }
+  }, {
+    key: 'attachListeners',
+    value: function attachListeners() {
+      document.querySelector(this.selector).addEventListener('click', function (event) {
+        console.log(event.target);
+
+        if (event.target.classList.contains('simple-item--check')) {
+          console.log('item is completed');
+        }
+
+        if (event.target.classList.contains('simple-item--close')) {
+          console.log('item is removed');
+        }
+      });
     }
   }, {
     key: 'generateTitle',
@@ -167,6 +183,7 @@ var SimpleList = function () {
     key: 'generateDesc',
     value: function generateDesc(text) {
       var itemDesc = document.createElement('span');
+      itemDesc.classList.add('simple-item--desc');
       itemDesc.innerHTML = text;
       return itemDesc;
     }

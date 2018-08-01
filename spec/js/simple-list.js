@@ -57,11 +57,11 @@ class SimpleList {
   initList() {
     this.simpleListElement = document.querySelector(this.selector);
     this.createListElement();
+    this.attachListeners();
   }
 
   createListElement() {
     if (this.simpleListElement) {
-      this.simpleListElement.innerHTML = "";
       this.simpleListElement.classList.add('simple-list')
       const title = this.title ? this.generateTitle(this.title) : null; 
       this.itemListElement = document.createElement('ul');
@@ -71,6 +71,20 @@ class SimpleList {
     } else {
       throw new Error(`DOM element with ${this.selector} selector not found`)
     }
+  }
+
+  attachListeners() {
+    document.querySelector(this.selector).addEventListener('click', (event) => {
+      console.log(event.target);
+
+      if ( event.target.classList.contains('simple-item--check') ) {
+        console.log('item is completed');
+      }
+
+      if ( event.target.classList.contains('simple-item--close') ) {
+        console.log('item is removed');
+      }
+    });
   }
 
   generateTitle(title) {
@@ -113,6 +127,7 @@ class SimpleList {
 
   generateDesc(text) {
     const itemDesc = document.createElement('span');
+    itemDesc.classList.add('simple-item--desc');
     itemDesc.innerHTML = text;
     return itemDesc;
   }
