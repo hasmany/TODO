@@ -102,21 +102,21 @@ var SimpleList = function () {
   _createClass(SimpleList, [{
     key: 'initList',
     value: function initList() {
-      var listContainer = document.querySelector(this.selector);
-      this.createListElement(listContainer);
+      this.simpleListElement = document.querySelector(this.selector);
+      this.createListElement();
     }
   }, {
     key: 'createListElement',
-    value: function createListElement(listContainer) {
-      if (listContainer) {
-        listContainer.classList.add('simple-list');
+    value: function createListElement() {
+      if (this.simpleListElement) {
+        this.simpleListElement.classList.add('simple-list');
         var title = this.title ? this.generateTitle(this.title) : null;
         this.itemListElement = document.createElement('ul');
-        this.addItems();
+        this.addItemsUI(this.items);
         if (title) {
-          listContainer.appendChild(title);
+          this.simpleListElement.appendChild(title);
         }
-        listContainer.appendChild(this.itemListElement);
+        this.simpleListElement.appendChild(this.itemListElement);
       } else {
         throw new Error('DOM element with ' + this.selector + ' selector not found');
       }
@@ -129,19 +129,6 @@ var SimpleList = function () {
       return titleElement;
     }
   }, {
-    key: 'addItems',
-    value: function addItems() {
-      for (var i = this.items.length - 1; i >= 0; i--) {
-        this.addItem(this.items.splice(i, 1)[0]);
-      }
-    }
-  }, {
-    key: 'appendItem',
-    value: function appendItem(item) {
-      var itemElement = this.generateItem(item);
-      this.itemListElement.appendChild(itemElement);
-    }
-  }, {
     key: 'generateItem',
     value: function generateItem(item) {
       var itemElement = document.createElement('li');
@@ -152,6 +139,7 @@ var SimpleList = function () {
       itemElement.classList.add('simple-item');
       itemElement.setAttribute('data-complete', item.complete);
       itemElement.setAttribute('data-desc', item.desc);
+      itemElement.setAttribute('data-item-id', item.id);
 
       itemElement.appendChild(itemCheckBtn);
       itemElement.appendChild(itemDesc);
@@ -203,11 +191,25 @@ var SimpleList = function () {
       if (options && (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' && options.desc) {
         var item = new _simpleItem2.default(options);
         this.items.push(item);
-        this.appendItem(item);
+        this.addItemUI(item);
         return true;
       } else {
         throw new Error('addItem argument must include an object with a desc property');
       }
+    }
+  }, {
+    key: 'addItemsUI',
+    value: function addItemsUI(items) {
+      items = items.reverse();
+      for (var i = items.length - 1; i >= 0; i--) {
+        this.addItem(items.splice(i, 1)[0]);
+      }
+    }
+  }, {
+    key: 'addItemUI',
+    value: function addItemUI(item) {
+      var itemElement = this.generateItem(item);
+      this.itemListElement.appendChild(itemElement);
     }
   }, {
     key: 'removeItem',
@@ -215,11 +217,18 @@ var SimpleList = function () {
       for (var i = this.items.length - 1; i >= 0; i--) {
         if (this.items[i].id === id) {
           this.items.splice(i, 1);
+          this.removeItemUI(id);
           return true;
           break;
         }
       }
       return false;
+    }
+  }, {
+    key: 'removeItemUI',
+    value: function removeItemUI(id) {
+      var itemElement = this.simpleListElement.querySelector('[data-item-id="' + id + '"]');
+      itemElement.parentNode.removeChild(itemElement);
     }
   }]);
 
