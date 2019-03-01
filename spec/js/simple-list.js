@@ -1,3 +1,6 @@
+/**
+ * @TODO make the id private
+ */
 let counter = 0;
 
 class SimpleItem {
@@ -9,13 +12,12 @@ class SimpleItem {
       throw new Error("must instantiate item with a 'desc' property");
     } else {
       counter++;
-      this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
-      // Object.defineProperty(this, "id", {
-      //   value: id, 
-      //   writable: false
-      // });
+      Object.defineProperty(this, "id", {
+         value: counter, 
+         writable: false
+       });
     }
   }
 
@@ -62,14 +64,22 @@ class SimpleList {
 
   createListElement() {
     if (this.simpleListElement) {
-      this.simpleListElement.classList.add('simple-list')
+      this.resetList();
+      this.simpleListElement.classList.add('simple-list');
       const title = this.title ? this.generateTitle(this.title) : null; 
       this.itemListElement = document.createElement('ul');
       this.addItemsUI(this.items);
       if (title) { this.simpleListElement.appendChild(title) }
       this.simpleListElement.appendChild(this.itemListElement);
     } else {
-      throw new Error(`DOM element with ${this.selector} selector not found`)
+      throw new Error(`DOM element with ${this.selector} selector not found, please add  DOM Simple list requires an element wth the attribute ${this.selector} to be instantiated.`)
+    }
+  }
+
+  resetList() {
+    console.log('empty list');
+    while (this.simpleListElement.firstChild) {
+      this.simpleListElement.removeChild(this.simpleListElement.firstChild);
     }
   }
 

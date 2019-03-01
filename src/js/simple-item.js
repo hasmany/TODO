@@ -1,3 +1,6 @@
+/**
+ * @TODO make the id private
+ */
 let counter = 0;
 
 class SimpleItem {
@@ -9,13 +12,12 @@ class SimpleItem {
       throw new Error("must instantiate item with a 'desc' property");
     } else {
       counter++;
-      this.id = counter;
       this.desc = options.desc;
       this.complete = options.complete ? options.complete: false;
-      // Object.defineProperty(this, "id", {
-      //   value: id, 
-      //   writable: false
-      // });
+      Object.defineProperty(this, "id", {
+         value: counter, 
+         writable: false
+       });
     }
   }
 

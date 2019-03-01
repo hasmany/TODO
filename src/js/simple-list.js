@@ -18,14 +18,22 @@ class SimpleList {
 
   createListElement() {
     if (this.simpleListElement) {
-      this.simpleListElement.classList.add('simple-list')
+      this.resetList();
+      this.simpleListElement.classList.add('simple-list');
       const title = this.title ? this.generateTitle(this.title) : null; 
       this.itemListElement = document.createElement('ul');
       this.addItemsUI(this.items);
       if (title) { this.simpleListElement.appendChild(title) }
       this.simpleListElement.appendChild(this.itemListElement);
     } else {
-      throw new Error(`DOM element with ${this.selector} selector not found`)
+      throw new Error(`DOM element with ${this.selector} selector not found, please add  DOM Simple list requires an element wth the attribute ${this.selector} to be instantiated.`)
+    }
+  }
+
+  resetList() {
+    console.log('empty list');
+    while (this.simpleListElement.firstChild) {
+      this.simpleListElement.removeChild(this.simpleListElement.firstChild);
     }
   }
 
@@ -45,6 +53,7 @@ class SimpleList {
 
   generateTitle(title) {
    const titleElement =  document.createElement('p');
+   titleElement.classList.add('simple-list__title');
    titleElement.innerHTML = title;
    return titleElement;
   }

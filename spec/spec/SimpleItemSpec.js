@@ -2,7 +2,6 @@ describe("Simple Item Class", function() {
     
     beforeEach(function() {
       // reset counter
-      id = 0;
     });
 
     it("should be a function constructor", function() {
@@ -11,6 +10,7 @@ describe("Simple Item Class", function() {
 
     it("should create an instance of the class name of 'SimpleItem'", function() {
       var item = new SimpleItem({desc: "example todo item"});
+      console.log('first real test', item);
       expect(item.constructor.name).toBe("SimpleItem");
     });
     
@@ -21,13 +21,15 @@ describe("Simple Item Instance", function() {
 
     beforeEach(function() {
         // reset counter
-        id = 0;
+        console.log('id is zero');
+        counter = 0;
         item = new SimpleItem({
             desc: "Do Laundry"
         });
     });
 
     it("should return an error if it's created without options", function() {
+      console.log('first test', item);
       expect(function(){new SimpleItem()}).toThrowError("must instantiate item with options");
     });
 
@@ -104,6 +106,7 @@ describe("Simple Item Instance", function() {
     });
 
     it("'getId' should return the id of an item. The id for an item is automatically added and starts at 1", function() {
+      console.log(item);
       expect(item.getId()).toBe(1);
       let toDoItem2 = new SimpleItem({desc: "go to the gym."});
       expect(toDoItem2.getId()).toBe(2);
